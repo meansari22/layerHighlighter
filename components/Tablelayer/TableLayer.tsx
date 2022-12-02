@@ -5,39 +5,20 @@ function TableLayer() {
   const containerRef = useRef<any>();
   const [live, setLive] = useState<boolean>(true);
   const [scr, setScr]= useState<{height:number, width:number}>({height:100, width:100})
+ function getWidth(val:number){
+    return (val*0.60)
+  }
+  function getHeight(){
+    const w= getWidth(window.innerWidth)/4;
+    return w*3
+  }
   useEffect(() => {
  console.log(window.innerWidth)
     if(window.innerWidth){
-        if(window.innerWidth>320&& window.innerWidth<=600){
-            setScr({
-                height:250,
-                width:400
-            })
-        }
-        if(window.innerWidth>600&& window.innerWidth<=720){
-            setScr({
-                height:300,
-                width:500
-            })
-        }
-        if(window.innerWidth>720&& window.innerWidth<=1024){
-            setScr({
-                height:400,
-                width:600
-            })
-        }
-        if(window.innerWidth>1024&& window.innerWidth<=1200){
-            setScr({
-                height:640,
-                width:800
-            })
-        }
-        if(window.innerWidth>1200){
-            setScr({
-                height:640,
-                width:800
-            })
-        }
+        setScr({
+            height:getHeight(),
+            width:getWidth(window.innerWidth)
+        })
     }
   },[])
   return (
@@ -100,7 +81,7 @@ function TableLayer() {
       <LayerHighlighter
         ref={containerRef}
         screen={scr}
-        image="tableLayer.jpg"
+        image="./tableLayer.jpg"
         onSave={(e) => {
           console.log(e);
         }}
