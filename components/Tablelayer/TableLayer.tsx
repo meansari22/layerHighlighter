@@ -81,7 +81,7 @@ function TableLayer() {
       <LayerHighlighter
         ref={containerRef}
         screen={scr}
-        image="./tableLayer.jpg"
+        image="https://raw.githubusercontent.com/meansari22/layerHighlighter/main/public/tablelayer.jpg"
         onSave={(e) => {
           console.log(e);
         }}
